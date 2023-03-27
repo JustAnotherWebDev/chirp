@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-black text-slate-100;
+}
+
+.test {
+  @apply bg-green-200;
+}
