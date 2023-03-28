@@ -5,6 +5,7 @@ import { api, RouterOutputs } from "~/utils/api";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
+import Link from "next/link";
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -79,11 +80,14 @@ const PostView = (props: PostWithUser) => {
         alt={`@${author.username}'s profile picture`}
       />
       <div className="flex flex-col">
-        <div className="flex text-slate-300">
-          <span>
-            @{author.username} ·{" "}
+        <div className="flex gap-1 text-slate-300">
+          <Link href={`/@${author.username}`}>
+            <span>@{author.username}</span>
+          </Link>
+          <span>·</span>
+          <Link href={`/post/${post.id}`}>
             <span className="font-thin">{dayjs(post.createdAt).fromNow()}</span>
-          </span>
+          </Link>
         </div>
         <span className="text-xl">{post.content}</span>
       </div>
